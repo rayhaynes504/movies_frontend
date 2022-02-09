@@ -8,7 +8,6 @@ useEffect(() => {
     fetch('https://kr-movie-api.herokuapp.com/api/movies/')
     .then(res => res.json())
     .then(res => {
-        console.log(res)
         setMovies(res)
     })
     .catch(err => console.log(err))
@@ -21,11 +20,11 @@ if (!movies) {
         <div>
             {movies.map(movie => {
                 return(
-                <div className='movie-div'>
+                <div className='movie-div' key={Math.random() * 1000}>
                   <h2>{movie.title}</h2>
                     <img src={movie.movie_poster} alt={movie.title}/>
-                    <p>{movie.genre}</p>
-                    <p>{movie.release_date}</p>
+                    <p>Genre: {movie.genre}</p>
+                    <p>Release Date: {movie.release_date}</p>
                 </div>
                 )
             })}
